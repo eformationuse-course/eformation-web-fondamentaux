@@ -5,30 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Présentation fictive des services Kanto Services à Antananarivo.">
     <title>Kanto Services | Présentation</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
   </head>
   <body>
-    <a href="#contenu">Aller au contenu principal</a>
+    <a class="skip-link" href="#contenu">Aller au contenu principal</a>
 
-    <header>
-      <p><strong>Kanto Services</strong> — entreprise fictive de démonstration</p>
-      <nav aria-label="Navigation principale">
-        <ul>
-          <li><a href="#presentation">Présentation</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#realisations">Réalisations</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <p class="brand"><strong>Kanto Services</strong><span>Entreprise fictive</span></p>
+        <nav aria-label="Navigation principale">
+          <ul class="nav-list">
+            <li><a href="#presentation">Présentation</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#realisations">Réalisations</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main id="contenu">
-      <section id="presentation" aria-labelledby="titre-presentation">
-        <h1 id="titre-presentation">Bienvenue chez Kanto Services</h1>
-        <p>Cette entreprise fictive située à Antananarivo sert d'exemple
-          pour apprendre à construire une page web en HTML.</p>
-        <p>Nous présentons trois catégories de services imaginaires.
-          Les informations ne constituent pas une offre commerciale réelle.</p>
-        <figure>
+      <section id="presentation" class="hero" aria-labelledby="titre-presentation">
+        <div class="hero__text">
+          <p class="eyebrow">Un exemple d'activité à Antananarivo</p>
+          <h1 id="titre-presentation">Bienvenue chez Kanto Services</h1>
+          <p class="lead">Cette entreprise fictive située à Antananarivo sert d'exemple
+            pour apprendre à construire une page web en HTML et CSS.</p>
+          <p>Nous présentons trois catégories de services imaginaires.
+            Les informations ne constituent pas une offre commerciale réelle.</p>
+          <a class="button-link" href="#services">Découvrir les services</a>
+        </div>
+        <figure class="hero__figure">
           <img src="assets/images/atelier.svg"
                alt="Illustration d'un espace de travail avec un ordinateur, des dossiers et une plante"
                width="640" height="320">
@@ -36,89 +45,94 @@
         </figure>
       </section>
 
-      <section id="services" aria-labelledby="titre-services">
+      <section id="services" class="content-section" aria-labelledby="titre-services">
+        <p class="eyebrow">Ce que présente notre exemple</p>
         <h2 id="titre-services">Nos services de démonstration</h2>
-        <p>Chaque service est présenté dans son propre article.</p>
-        <article>
-          <h3>Création de documents</h3>
-          <p>Préparation et organisation de documents administratifs fictifs.</p>
-        </article>
-        <article>
-          <h3>Assistance numérique</h3>
-          <p>Accompagnement imaginaire à l'utilisation des outils du quotidien.</p>
-        </article>
-        <article>
-          <h3>Organisation de dossiers</h3>
-          <p>Classement et suivi de fichiers pour un exemple pédagogique.</p>
-        </article>
+        <p class="section-intro">Chaque service est présenté dans son propre article.</p>
+        <div class="service-grid">
+          <article class="service-card">
+            <p class="service-card__number" aria-hidden="true">01</p>
+            <h3>Création de documents</h3>
+            <p>Préparation et organisation de documents administratifs fictifs.</p>
+          </article>
+          <article class="service-card">
+            <p class="service-card__number" aria-hidden="true">02</p>
+            <h3>Assistance numérique</h3>
+            <p>Accompagnement imaginaire à l'utilisation des outils du quotidien.</p>
+          </article>
+          <article class="service-card">
+            <p class="service-card__number" aria-hidden="true">03</p>
+            <h3>Organisation de dossiers</h3>
+            <p>Classement et suivi de fichiers pour un exemple pédagogique.</p>
+          </article>
+        </div>
       </section>
 
-      <section id="realisations" aria-labelledby="titre-realisations">
+      <section id="realisations" class="content-section" aria-labelledby="titre-realisations">
+        <p class="eyebrow">Quelques exemples concrets</p>
         <h2 id="titre-realisations">Exemples de réalisations</h2>
         <p>Voici un tableau de données fictives, et non un outil de mise en page.</p>
-        <table>
-          <caption>Trois exemples de livrables fictifs</caption>
-          <thead>
-            <tr>
-              <th scope="col">Service</th>
-              <th scope="col">Livrable</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Documents</td>
-              <td>Modèle de lettre</td>
-            </tr>
-            <tr>
-              <td>Assistance numérique</td>
-              <td>Guide de prise en main</td>
-            </tr>
-            <tr>
-              <td>Organisation</td>
-              <td>Plan de classement</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-scroll" role="region" aria-label="Tableau des réalisations" tabindex="0">
+          <table>
+            <caption>Trois exemples de livrables fictifs</caption>
+            <thead>
+              <tr>
+                <th scope="col">Service</th>
+                <th scope="col">Livrable</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Documents</td><td>Modèle de lettre</td></tr>
+              <tr><td>Assistance numérique</td><td>Guide de prise en main</td></tr>
+              <tr><td>Organisation</td><td>Plan de classement</td></tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
-      <section id="contact" aria-labelledby="titre-contact">
-        <h2 id="titre-contact">Formulaire de contact (démonstration)</h2>
-        <p id="note-formulaire">Ce formulaire sert uniquement à apprendre HTML.
-          Aucun message n'est envoyé et aucune donnée n'est conservée.</p>
-        <form aria-describedby="note-formulaire">
+      <section id="contact" class="content-section contact-section" aria-labelledby="titre-contact">
+        <div class="contact-heading">
+          <p class="eyebrow">Interface de démonstration</p>
+          <h2 id="titre-contact">Formulaire de contact</h2>
+          <p id="note-formulaire">Ce formulaire sert uniquement à apprendre HTML et CSS.
+            Aucun message n'est envoyé et aucune donnée n'est conservée.</p>
+        </div>
+        <form class="contact-form" aria-describedby="note-formulaire">
           <fieldset>
             <legend>Votre message fictif</legend>
-            <p>
-              <label for="nom">Nom</label><br>
+            <div class="form-field">
+              <label for="nom">Nom</label>
               <input id="nom" name="nom" type="text" autocomplete="name" required>
-            </p>
-            <p>
-              <label for="email">Adresse e-mail</label><br>
+            </div>
+            <div class="form-field">
+              <label for="email">Adresse e-mail</label>
               <input id="email" name="email" type="email" autocomplete="email" required>
-            </p>
-            <p>
-              <label for="sujet">Service concerné</label><br>
+            </div>
+            <div class="form-field">
+              <label for="sujet">Service concerné</label>
               <select id="sujet" name="sujet" required>
                 <option value="">Choisissez un service</option>
                 <option value="documents">Création de documents</option>
                 <option value="numerique">Assistance numérique</option>
                 <option value="organisation">Organisation de dossiers</option>
               </select>
-            </p>
-            <p>
-              <label for="message">Votre message</label><br>
-              <textarea id="message" name="message" rows="5" cols="36" required></textarea>
-            </p>
+            </div>
+            <div class="form-field">
+              <label for="message">Votre message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
           </fieldset>
         </form>
-        <p><strong>Important :</strong> aucun bouton d'envoi n'est présenté,
+        <p class="form-note"><strong>Important :</strong> aucun bouton d'envoi n'est présenté,
           car il n'existe pas encore de service pour recevoir les messages.</p>
       </section>
     </main>
 
-    <footer>
-      <p>© 2026 Kanto Services — Exemple pédagogique fictif.</p>
-      <p><a href="#contenu">Retour au contenu principal</a></p>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>© 2026 Kanto Services — Exemple pédagogique fictif.</p>
+        <p><a href="#contenu">Retour au contenu principal</a></p>
+      </div>
     </footer>
   </body>
 </html>

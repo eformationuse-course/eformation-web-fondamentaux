@@ -4,15 +4,15 @@ Ce dépôt contient les projets pédagogiques de la formation. Les exemples déc
 
 ## Projets disponibles
 
-- `projects/kanto-services/` — premier site HTML, sans CSS ni JavaScript à ce jalon.
+- `projects/kanto-services/` — site HTML sémantique avec trois feuilles CSS, sans JavaScript ni backend.
 
 ## Évolution
 
-L'architecture détaillée des prochains projets est planifiée dans Notion, mais les dossiers non encore enseignés ne sont pas ajoutés à ce jalon. Les versions suivantes seront identifiées par des commits et des tags, après tests.
+L'architecture détaillée des prochains projets est planifiée dans Notion, mais les dossiers non encore enseignés ne sont pas ajoutés à ce jalon. Les états pédagogiques sont identifiés par leurs commits après vérification ; aucun tag n'est déclaré créé avant confirmation.
 
 ## Utilisation
 
-Lire le README du projet concerné et ouvrir `index.html`. Le projet HTML fonctionne hors connexion après téléchargement.
+Lire le README du projet concerné et ouvrir `index.html`. Le projet HTML/CSS fonctionne hors connexion après téléchargement.
 
 ## Prudence
 

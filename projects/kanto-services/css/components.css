@@ -1,0 +1,104 @@
+/* 3. Composants visuels : navigation, cartes, tableau et formulaire. */
+.brand { margin: 0; line-height: 1.3; }
+.brand strong { display: block; color: var(--color-primary); font-size: 1.22rem; }
+.brand span { display: block; color: var(--color-muted); font-size: .83rem; }
+
+.nav-list a {
+  display: inline-block;
+  padding: .45rem .75rem;
+  border-radius: .4rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+.nav-list a:hover, .nav-list a:focus-visible { background: var(--color-accent); }
+
+.eyebrow {
+  color: var(--color-primary);
+  font-size: .85rem;
+  font-weight: bold;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.lead { font-size: 1.14rem; color: var(--color-muted); }
+.section-intro { color: var(--color-muted); }
+
+.button-link {
+  display: inline-block;
+  margin-top: .65rem;
+  padding: .8rem 1.25rem;
+  border: 2px solid var(--color-primary);
+  border-radius: .55rem;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+.button-link:hover { background: var(--color-primary-dark); color: #fff; }
+
+.hero__figure {
+  padding: .8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+}
+.hero__figure img { width: 100%; border-radius: .5rem; }
+.hero__figure figcaption {
+  margin: .8rem .35rem .1rem;
+  color: var(--color-muted);
+  font-size: .88rem;
+}
+
+.service-card {
+  position: relative;
+  padding: 1.6rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: .85rem;
+  box-shadow: var(--shadow-card);
+}
+.service-card h3 { margin-bottom: .7rem; }
+.service-card p:last-child { margin-bottom: 0; }
+.service-card__number {
+  color: var(--color-primary);
+  font-weight: bold;
+  font-size: .84rem;
+  letter-spacing: .12em;
+}
+
+.table-scroll { overflow-x: auto; border-radius: .75rem; }
+table { width: 100%; border-collapse: collapse; background: #fff; }
+caption { padding: .6rem; text-align: left; color: var(--color-muted); }
+th, td { border-bottom: 1px solid var(--color-border); padding: .85rem 1rem; text-align: left; }
+th { background: var(--color-accent); color: var(--color-ink); }
+
+.contact-form fieldset {
+  margin: 0;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: .85rem;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+.contact-form legend { padding: 0 .35rem; font-weight: bold; }
+.form-field { margin-bottom: 1.25rem; }
+.form-field:last-child { margin-bottom: 0; }
+.form-field label { display: block; margin-bottom: .3rem; font-weight: bold; }
+.form-field input, .form-field select, .form-field textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: .72rem .8rem;
+  border: 1px solid #72859a;
+  border-radius: .4rem;
+  color: var(--color-ink);
+  background: #fff;
+  font: inherit;
+}
+.form-field textarea { resize: vertical; }
+.form-field input:hover, .form-field select:hover,
+.form-field textarea:hover { border-color: var(--color-primary); }
+.form-note { grid-column: 1 / -1; color: var(--color-muted); }
+.site-footer a { color: #d7fff4; }
+.site-footer a:hover { color: #fff; }
+.site-footer p { margin: 0; }

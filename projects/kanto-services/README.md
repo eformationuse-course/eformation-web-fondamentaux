@@ -1,34 +1,50 @@
-# Kanto Services — site HTML de démonstration
+# Kanto Services — HTML et CSS
 
-**Projet fictif.** Aucune entreprise réelle n'est représentée et aucun service n'est vendu.
+**Entreprise fictive à Antananarivo.** Aucun service réel n'est proposé.
 
-## Objectif
+## Objectif de cette étape
 
-Comprendre le Web et réaliser une page HTML sémantique avec navigation, sections, image locale, tableau de données et formulaire accessible **sans envoi**. Cette étape n'utilise volontairement ni CSS, ni JavaScript, ni backend : les styles et la publication sont introduits plus tard.
+Transformer le HTML sémantique du premier module en interface visuelle structurée : navigation, bloc d'accueil, cartes de services, tableau, formulaire, et pied de page. Il n'y a ni JavaScript ni backend.
 
-## Fichiers
+## Arborescence
 
-- `index.html` : structure HTML complète et contenu fictif.
-- `assets/images/atelier.svg` : illustration vectorielle locale et pédagogique du bureau fictif.
+```text
+kanto-services/
+├── index.html
+├── css/
+│   ├── base.css
+│   ├── layout.css
+│   └── components.css
+└── assets/
+    └── images/
+        └── atelier.svg
+```
 
-## Lancer
+- `base.css` : variables de couleurs, typographie, modèle de boîte et focus.
+- `layout.css` : placement des sections, Flexbox et Grid.
+- `components.css` : navigation, lien à l'apparence de bouton, cartes, tableau, champs et légendes.
+- `index.html` : contenu et balises HTML conservant leurs fonctions sémantiques.
 
-1. Télécharger ou copier le dossier `kanto-services` en conservant ses sous-dossiers.
-2. Ouvrir `index.html` dans un navigateur récent en double-cliquant dessus.
-3. Tester les liens de navigation et le retour vers le contenu principal.
-4. Vérifier que l'image est visible et que les champs ont des libellés.
+## Ouvrir et vérifier
 
-Aucune installation de dépendance ni connexion Internet n'est nécessaire pour ouvrir la page.
+1. Conserver la hiérarchie du dossier ci-dessus.
+2. Ouvrir `index.html` dans un navigateur récent. Aucun serveur ni installation n'est nécessaire pour cette étape.
+3. Vérifier que l'accueil présente deux colonnes sur un écran suffisamment large, que trois cartes sont alignées, que les liens mènent aux bonnes sections et que le formulaire comporte quatre champs.
+4. Naviguer au clavier : `Tab` affiche un contour de focus et rend visible le lien « Aller au contenu principal ».
+5. Réduire la fenêtre : les blocs peuvent se réorganiser, sans supposer que cette première adaptation remplace le cours complet de responsive design.
+6. Si aucun style n'apparaît, contrôler exactement `css/base.css`, `css/layout.css`, `css/components.css` et les trois balises `link` dans `head`.
 
-## Limites délibérées
+## Limites
 
-- Le formulaire **n'envoie rien** : aucun bouton d'envoi ni serveur ne sont fournis.
-- Les champs HTML `required` et `type="email"` servent à découvrir la validation native ; sans action d'envoi, celle-ci ne déclenche pas automatiquement des messages.
-- L'apparence est le style par défaut du navigateur, qui sera amélioré dans le module CSS.
-- L'illustration est une création vectorielle fictive, pas une photo ou une capture authentique.
+- Le formulaire n'envoie **aucune** donnée, ne l'enregistre pas et ne contient pas de bouton d'envoi.
+- Les états `required` et `type="email"` sont des attributs HTML ; aucune validation au clic n'est démontrée ici.
+- Le lien « Découvrir les services » est une navigation interne stylisée **comme un bouton**, et non une action JavaScript.
+- L'image est une illustration SVG originale, pas une photographie.
+- Ce jalon n'inclut pas de framework CSS, ni de JavaScript, ni de bibliothèque externe, ni de système de publication en ligne.
 
-## Sources officielles
+## Documentation
 
-- [MDN — HTML : Créer le contenu](https://developer.mozilla.org/fr/docs/Learn_web_development/Getting_started/Your_first_website/Creating_the_content)
-- [MDN — élément form](https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/form)
-- [Visual Studio Code — documentation](https://code.visualstudio.com/docs)
+- [MDN : CSS](https://developer.mozilla.org/fr/docs/Web/CSS)
+- [MDN : Flexbox](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_flexible_box_layout)
+- [MDN : Grid](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_grid_layout)
+- [MDN : Cascade](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_cascade/Cascade)

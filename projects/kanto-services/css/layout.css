@@ -60,7 +60,7 @@ main { width: 100%; }
   align-items: start;
 }
 
-/* Première adaptation sans media query : le flux reste sûr. */
+/* Première règle conditionnelle : adapter la zone contact et le titre. */
 @media (max-width: 48rem) {
   .contact-section { grid-template-columns: 1fr; }
   h1 { font-size: 2rem; }

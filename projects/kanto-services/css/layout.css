@@ -1,0 +1,73 @@
+/* 2. Disposition : les grands blocs, Flexbox et Grid. */
+.site-header {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header__inner, .site-footer__inner {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem .8rem;
+  margin: 0;
+  padding: 0;
+}
+
+main { width: 100%; }
+
+.hero {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.hero__text { min-width: 0; }
+.hero__figure { min-width: 0; margin: 0; }
+
+.content-section {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.contact-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 1.75rem 2.5rem;
+  align-items: start;
+}
+
+/* Première adaptation sans media query : le flux reste sûr. */
+@media (max-width: 48rem) {
+  .contact-section { grid-template-columns: 1fr; }
+  h1 { font-size: 2rem; }
+}
+
+.site-footer {
+  margin-top: 2.5rem;
+  background: var(--color-ink);
+  color: #fff;
+}

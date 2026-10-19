@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" role="img" aria-labelledby="titre description">
+  <title id="titre">Espace de travail Kanto Services</title>
+  <desc id="description">Bureau fictif avec un ordinateur affichant une feuille de document, deux dossiers et une plante.</desc>
+  <rect width="640" height="320" fill="#f5f2eb"/>
+  <rect x="40" y="236" width="560" height="18" rx="7" fill="#775f4b"/>
+  <rect x="65" y="254" width="16" height="48" rx="5" fill="#a38668"/>
+  <rect x="560" y="254" width="16" height="48" rx="5" fill="#a38668"/>
+  <rect x="156" y="58" width="303" height="171" rx="12" fill="#24364b"/>
+  <rect x="170" y="73" width="275" height="139" rx="4" fill="#e4f0ef"/>
+  <rect x="226" y="91" width="154" height="102" rx="5" fill="#fff"/>
+  <rect x="245" y="109" width="102" height="7" rx="3" fill="#1b7f79"/>
+  <rect x="245" y="129" width="109" height="5" rx="2" fill="#a4b6b2"/>
+  <rect x="245" y="145" width="99" height="5" rx="2" fill="#a4b6b2"/>
+  <rect x="245" y="161" width="80" height="5" rx="2" fill="#a4b6b2"/>
+  <rect x="294" y="229" width="26" height="14" rx="2" fill="#7b8a91"/>
+  <rect x="247" y="241" width="120" height="7" rx="3" fill="#81929a"/>
+  <rect x="74" y="208" width="69" height="26" rx="3" fill="#d5a854"/>
+  <rect x="86" y="188" width="76" height="22" rx="3" fill="#537f95"/>
+  <rect x="89" y="181" width="59" height="10" rx="2" fill="#fff"/>
+  <rect x="512" y="189" width="62" height="46" rx="7" fill="#bd785e"/>
+  <path d="M541 190 Q514 158 529 128 M541 189 Q559 152 544 123 M541 183 Q573 172 580 143" fill="none" stroke="#357a50" stroke-width="8" stroke-linecap="round"/>
+  <ellipse cx="527" cy="133" rx="15" ry="7" transform="rotate(-35 527 133)" fill="#4b9a5b"/>
+  <ellipse cx="548" cy="127" rx="15" ry="7" transform="rotate(35 548 127)" fill="#4b9a5b"/>
+  <ellipse cx="576" cy="146" rx="15" ry="7" transform="rotate(-22 576 146)" fill="#4b9a5b"/>
+</svg>

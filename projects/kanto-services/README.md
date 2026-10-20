@@ -1,50 +1,52 @@
-# Kanto Services — HTML et CSS
+# Kanto Services — site vitrine responsive
 
-**Entreprise fictive à Antananarivo.** Aucun service réel n'est proposé.
+Kanto Services est une **entreprise entièrement fictive à Antananarivo**, utilisée pour apprendre HTML, CSS, le responsive design, Git et la publication statique. Aucune offre commerciale ni contact réel.
 
-## Objectif de cette étape
-
-Transformer le HTML sémantique du premier module en interface visuelle structurée : navigation, bloc d'accueil, cartes de services, tableau, formulaire, et pied de page. Il n'y a ni JavaScript ni backend.
-
-## Arborescence
+## Fichiers
 
 ```text
 kanto-services/
 ├── index.html
 ├── css/
-│   ├── base.css
-│   ├── layout.css
-│   └── components.css
+│   ├── base.css        # typographie, variables, focus, mouvement réduit
+│   ├── layout.css      # mobile-first, Flexbox, Grid, media queries
+│   └── components.css  # navigation, cartes, tableau, formulaire
 └── assets/
     └── images/
-        └── atelier.svg
+        └── atelier.svg # illustration originale légère
 ```
 
-- `base.css` : variables de couleurs, typographie, modèle de boîte et focus.
-- `layout.css` : placement des sections, Flexbox et Grid.
-- `components.css` : navigation, lien à l'apparence de bouton, cartes, tableau, champs et légendes.
-- `index.html` : contenu et balises HTML conservant leurs fonctions sémantiques.
+## Exécuter le site localement
 
-## Ouvrir et vérifier
+Aucune installation n'est requise : ouvrir `index.html` dans un navigateur actuel. Les liens sont relatifs, l'image et les feuilles CSS sont locales. On peut aussi utiliser un serveur local facultatif :
 
-1. Conserver la hiérarchie du dossier ci-dessus.
-2. Ouvrir `index.html` dans un navigateur récent. Aucun serveur ni installation n'est nécessaire pour cette étape.
-3. Vérifier que l'accueil présente deux colonnes sur un écran suffisamment large, que trois cartes sont alignées, que les liens mènent aux bonnes sections et que le formulaire comporte quatre champs.
-4. Naviguer au clavier : `Tab` affiche un contour de focus et rend visible le lien « Aller au contenu principal ».
-5. Réduire la fenêtre : les blocs peuvent se réorganiser, sans supposer que cette première adaptation remplace le cours complet de responsive design.
-6. Si aucun style n'apparaît, contrôler exactement `css/base.css`, `css/layout.css`, `css/components.css` et les trois balises `link` dans `head`.
+```bash
+cd projects/kanto-services
+python -m http.server 8000
+```
+
+Sous Windows, si `python` n'est pas reconnu, essayer `py -m http.server 8000`. Visiter ensuite `http://localhost:8000/`, puis arrêter le serveur avec `Ctrl+C`. Ce serveur ne permet **pas** de recevoir des formulaires.
+
+## Résultats attendus
+
+- 320–600 px : navigation sur plusieurs lignes, accueil et services en une colonne ; tableau défilant *dans son conteneur*.
+- À partir de 672 px (`42rem` à racine 16px par défaut) : deux colonnes de cartes de services.
+- À partir de 960 px (`60rem` à racine 16px par défaut) : accueil en deux colonnes, trois cartes, formulaire sur la droite.
+- Les seuils effectifs en CSS `rem` dépendent des réglages de taille de police racine et du navigateur.
+- Les commandes et résultats de test locaux sont détaillés dans le PDF de formation. Test clavier : première tabulation révèle « Aller au contenu principal ».
+
+## Publication GitHub Pages
+
+Le dépôt racine contient plusieurs projets. `docs/publication-github-pages.md` décrit un **workflow GitHub Actions** qui publie uniquement `projects/kanto-services` dans la racine du site Pages. Nécessite de choisir **GitHub Actions** dans `Settings → Pages → Build and deployment → Source` et de contrôler le déploiement. **La présence d'un fichier YAML n'est pas la preuve d'un site publié.**
+
+La publication rend le site publiquement consultable. Ne jamais placer de données personnelles, mots de passe ou secrets dans les fichiers envoyés.
 
 ## Limites
 
-- Le formulaire n'envoie **aucune** donnée, ne l'enregistre pas et ne contient pas de bouton d'envoi.
-- Les états `required` et `type="email"` sont des attributs HTML ; aucune validation au clic n'est démontrée ici.
-- Le lien « Découvrir les services » est une navigation interne stylisée **comme un bouton**, et non une action JavaScript.
-- L'image est une illustration SVG originale, pas une photographie.
-- Ce jalon n'inclut pas de framework CSS, ni de JavaScript, ni de bibliothèque externe, ni de système de publication en ligne.
+Le formulaire sans bouton d'envoi sert à l'apprentissage des champs HTML et de leur mise en forme ; il n'envoie ni ne conserve de messages. Le site n'utilise ni JavaScript, ni serveur applicatif, ni hébergement de données. La qualité de connexion peut affecter le temps de consultation du site distant, mais les fichiers locaux fonctionnent hors ligne.
 
-## Documentation
+## Ressources
 
-- [MDN : CSS](https://developer.mozilla.org/fr/docs/Web/CSS)
-- [MDN : Flexbox](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_flexible_box_layout)
-- [MDN : Grid](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_grid_layout)
-- [MDN : Cascade](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_cascade/Cascade)
+- [MDN — responsive design](https://developer.mozilla.org/fr/docs/Learn_web_development/Core/CSS_layout/Responsive_Design)
+- [MDN — media queries](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_media_queries/Using_media_queries)
+- [GitHub — configurer la publication Pages](https://docs.github.com/fr/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)

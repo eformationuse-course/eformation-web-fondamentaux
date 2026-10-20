@@ -1,0 +1,37 @@
+name: Publier Kanto Services sur GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'projects/kanto-services/**'
+      - '.github/workflows/publish-kanto.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+      - name: Configurer GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Charger les fichiers du site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./projects/kanto-services
+      - name: Déployer
+        id: deployment
+        uses: actions/deploy-pages@v4

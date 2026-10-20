@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Budget Tana, interface pédagogique de dépenses fictives en MGA.">
+  <title>Budget Tana — Asynchronisme et stockage</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header">
+    <div class="container">
+      <p class="eyebrow">Projet pédagogique fictif • Antananarivo</p>
+      <h1>Budget Tana</h1>
+      <p>Ajoutez des dépenses fictives en ariary, chargez un JSON local
+        et retrouvez votre liste après rechargement sur cet appareil.</p>
+    </div>
+  </header>
+  <main id="contenu" class="container" tabindex="-1">
+    <section class="summary" aria-labelledby="titre-synthese">
+      <h2 id="titre-synthese">Votre récapitulatif</h2>
+      <div class="summary-grid">
+        <p class="metric"><span>Nombre de dépenses</span>
+          <strong id="nombre-depenses">0</strong></p>
+        <p class="metric"><span>Total du filtre actif</span>
+          <strong id="total-depenses">0 MGA</strong></p>
+      </div>
+    </section>
+    <section class="panel" aria-labelledby="titre-stockage">
+      <h2 id="titre-stockage">Sauvegarde locale et données JSON</h2>
+      <p class="help">Cette démonstration utilise localStorage : non chiffré,
+        limité à ce navigateur et à l'adresse du site. N'entrez aucune vraie donnée privée.</p>
+      <p id="etat-stockage" class="feedback" role="status" aria-live="polite"></p>
+      <div class="actions">
+        <button type="button" class="primary" id="charger-json">Charger les 3 dépenses JSON fictives</button>
+        <button type="button" id="tester-erreur-http">Illustrer une erreur HTTP 404</button>
+      </div>
+      <p id="etat-reseau" class="feedback" role="status" aria-live="polite"></p>
+    </section>
+    <div class="content-grid">
+      <section class="panel" aria-labelledby="titre-formulaire">
+        <h2 id="titre-formulaire">Ajouter une dépense</h2>
+        <p class="help">Tous les champs sont obligatoires.
+          Saisissez des valeurs fictives uniquement.</p>
+        <form id="form-depense" novalidate>
+          <div class="field">
+            <label for="libelle">Description</label>
+            <input id="libelle" name="libelle" type="text"
+                   maxlength="80" required aria-describedby="aide-libelle erreur-libelle">
+            <p class="hint" id="aide-libelle">Exemple : Cahiers novembre</p>
+            <p class="error" id="erreur-libelle"></p>
+          </div>
+          <div class="field">
+            <label for="montant">Montant en MGA</label>
+            <input id="montant" name="montant" type="number"
+                   min="1" step="1" required
+                   aria-describedby="aide-montant erreur-montant">
+            <p class="hint" id="aide-montant">Entier positif, sans espaces.</p>
+            <p class="error" id="erreur-montant"></p>
+          </div>
+          <div class="field">
+            <label for="categorie">Catégorie</label>
+            <select id="categorie" name="categorie" required
+                    aria-describedby="erreur-categorie">
+              <option value="">Choisir une catégorie</option>
+              <option value="Logement">Logement</option>
+              <option value="Repas">Repas</option>
+              <option value="Transport">Transport</option>
+              <option value="Internet">Internet</option>
+              <option value="Fournitures">Fournitures</option>
+            </select>
+            <p class="error" id="erreur-categorie"></p>
+          </div>
+          <div class="field">
+            <label for="date">Date de la dépense</label>
+            <input id="date" name="date" type="date" required
+                   aria-describedby="erreur-date">
+            <p class="error" id="erreur-date"></p>
+          </div>
+          <div class="actions">
+            <button type="submit" class="primary">Ajouter</button>
+            <button type="reset">Effacer les champs</button>
+          </div>
+          <p id="retour-formulaire" class="feedback" role="status"
+             aria-live="polite"></p>
+        </form>
+      </section>
+      <section class="panel" aria-labelledby="titre-liste">
+        <h2 id="titre-liste">Dépenses affichées</h2>
+        <div class="field">
+          <label for="filtre-categorie">Afficher la catégorie</label>
+          <select id="filtre-categorie">
+            <option value="toutes">Toutes les catégories</option>
+            <option value="Logement">Logement</option>
+            <option value="Repas">Repas</option>
+            <option value="Transport">Transport</option>
+            <option value="Internet">Internet</option>
+            <option value="Fournitures">Fournitures</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="recherche">Rechercher dans les descriptions</label>
+          <input type="search" id="recherche" autocomplete="off"
+                 placeholder="Ex. : cahiers">
+        </div>
+        <div class="field">
+          <label for="tri">Trier les dépenses</label>
+          <select id="tri">
+            <option value="date-desc">Dates récentes d'abord</option>
+            <option value="date-asc">Dates anciennes d'abord</option>
+            <option value="montant-desc">Montants décroissants</option>
+            <option value="montant-asc">Montants croissants</option>
+          </select>
+        </div>
+        <p id="etat-liste" class="help" role="status" aria-live="polite"></p>
+        <ul id="liste-depenses" class="expense-list"></ul>
+        <button id="restaurer" type="button" class="secondary">
+          Restaurer les 10 dépenses fictives
+        </button>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <p>Budget Tana — Démonstration fictive avec stockage dans le navigateur. Sans serveur applicatif.</p>
+  </footer>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

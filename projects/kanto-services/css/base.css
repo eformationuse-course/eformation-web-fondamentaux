@@ -1,4 +1,4 @@
-/* 1. Fondations : couleurs, taille du texte, cascade et modèle de boîte. */
+/* 1. Fondations communes. Le CSS final suit l'approche mobile-first. */
 :root {
   --color-ink: #20324b;
   --color-muted: #51647b;
@@ -13,11 +13,10 @@
   --content-width: 68rem;
 }
 
-/* Inclure padding et border dans la largeur déclarée. */
+/* La largeur inclut le contenu, le padding et la bordure. */
 *, *::before, *::after { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
-
 body {
   margin: 0;
   color: var(--color-ink);
@@ -29,23 +28,22 @@ body {
 
 h1, h2, h3, p, figure { margin-top: 0; }
 h1, h2, h3 { line-height: 1.22; }
-h1 { font-size: 2.5rem; }
-h2 { font-size: 1.9rem; }
+h1 { font-size: clamp(1.85rem, 1.25rem + 2.4vw, 2.75rem); }
+h2 { font-size: clamp(1.55rem, 1.15rem + 1.5vw, 2rem); }
 h3 { font-size: 1.2rem; }
-
 p { margin-bottom: 1rem; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: var(--color-primary); }
 a:hover { color: var(--color-primary-dark); }
 
-/* Le clavier doit toujours rendre la sélection visible. */
+/* L'anneau de focus reste visible au clavier. */
 a:focus-visible, input:focus-visible, select:focus-visible,
 textarea:focus-visible, .table-scroll:focus-visible {
   outline: 3px solid var(--color-focus);
   outline-offset: 3px;
 }
 
-/* Liens d'évitement visibles lors de la navigation au clavier. */
+/* Le lien d'evitement apparait lors de la tabulation. */
 .skip-link {
   position: absolute;
   top: -6rem;
@@ -57,3 +55,8 @@ textarea:focus-visible, .table-scroll:focus-visible {
   border-radius: .4rem;
 }
 .skip-link:focus { top: .5rem; }
+
+/* Eviter une animation imposee aux personnes qui la reduisent. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

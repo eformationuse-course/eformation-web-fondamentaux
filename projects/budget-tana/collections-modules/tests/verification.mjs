@@ -59,4 +59,8 @@ assert.throws(() => calculerTotal([
   { ...valid, montant: Number.MAX_SAFE_INTEGER },
   { ...valid, id: 'autre', montant: 10 }
 ]), RangeError);
-console.log('OK : 35 assertions de référence, calculs et erreurs.');
+assert.throws(() => totauxParCategorie([
+  { ...valid, montant: Number.MAX_SAFE_INTEGER },
+  { ...valid, id: 'autre', montant: 10 }
+]), RangeError);
+console.log('OK : 36 assertions de référence, calculs et erreurs.');

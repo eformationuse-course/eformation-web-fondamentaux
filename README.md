@@ -4,11 +4,13 @@ Ce dépôt contient les projets pédagogiques de la formation. Les exemples déc
 
 ## Projets disponibles
 
-- `projects/kanto-services/` — site HTML sémantique avec trois feuilles CSS, sans JavaScript ni backend.
+- `projects/kanto-services/` — site HTML/CSS responsive avec navigation clavier et adaptation mobile, sans JavaScript ni backend.
 
-## Évolution
+## Progression
 
-L'architecture détaillée des prochains projets est planifiée dans Notion, mais les dossiers non encore enseignés ne sont pas ajoutés à ce jalon. Les états pédagogiques sont identifiés par leurs commits après vérification ; aucun tag n'est déclaré créé avant confirmation.
+HTML sémantique → styles CSS structurés → version responsive mobile-first, versionnement Git et publication statique documentée. Les états pédagogiques sont identifiés par leurs commits ; aucun tag n'est annoncé créé sans contrôle.
+
+Voir `docs/publication-github-pages.md` pour activer et vérifier GitHub Pages. La présence d'un workflow ne prouve pas qu'un site est publié.
 
 ## Utilisation
 

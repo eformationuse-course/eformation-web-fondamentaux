@@ -6,6 +6,7 @@ Ce dépôt contient les projets pédagogiques de la formation. Les exemples déc
 
 - `projects/kanto-services/` — site HTML/CSS responsive avec navigation clavier et adaptation mobile, sans JavaScript ni backend.
 - `projects/budget-tana/fondamentaux/` — premières fonctions et algorithmes JavaScript en console pour un budget fictif en MGA ; aucune interface de saisie, aucun stockage ni backend.
+- `projects/budget-tana/collections-modules/` — dix dépenses fictives en MGA, tableaux/objets, méthodes, modules ES, validations et résultats en console.
 
 ## Progression
 

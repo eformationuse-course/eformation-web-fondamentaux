@@ -37,7 +37,11 @@ export function totauxParCategorie(liste) {
     Logement: 0, Repas: 0, Transport: 0, Internet: 0, Fournitures: 0
   };
   for (const depense of liste) {
-    resultat[depense.categorie] += depense.montant;
+    const nouveau = resultat[depense.categorie] + depense.montant;
+    if (!Number.isSafeInteger(nouveau)) {
+      throw new RangeError('Total de catégorie trop grand.');
+    }
+    resultat[depense.categorie] = nouveau;
   }
   return resultat;
 }

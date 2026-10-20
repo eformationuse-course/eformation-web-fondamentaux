@@ -8,10 +8,11 @@ Ce dépôt contient les projets pédagogiques de la formation. Les exemples déc
 - `projects/budget-tana/fondamentaux/` — premières fonctions et algorithmes JavaScript en console pour un budget fictif en MGA ; aucune interface de saisie, aucun stockage ni backend.
 - `projects/budget-tana/collections-modules/` — dix dépenses fictives en MGA, tableaux/objets, méthodes, modules ES, validations et résultats en console.
 - `projects/budget-tana/dom-formulaires/` — interface interactive Budget Tana : DOM, événements, ajout/suppression, filtres, erreurs accessibles et code testé sans backend ni stockage.
+- `projects/budget-tana/asynchrone-api-stockage/` — chargement JSON depuis un serveur local avec `fetch`, messages réseau, recherche/tri et persistance fictive via `localStorage` ; sans API distante ni backend.
 
 ## Progression
 
-HTML sémantique → CSS → responsive et Git → fondamentaux JavaScript → collections et modules ES → DOM, événements et formulaire interactif. Les états pédagogiques sont identifiés par leurs commits ; aucun tag n'est annoncé créé sans contrôle.
+HTML sémantique → CSS → responsive et Git → fondamentaux JavaScript → collections et modules ES → DOM, événements et formulaire interactif → asynchronisme, JSON, stockage local. Les états pédagogiques sont identifiés par leurs commits ; aucun tag n'est annoncé créé sans contrôle.
 
 Voir `docs/publication-github-pages.md` pour activer et vérifier GitHub Pages. La présence d'un workflow ne prouve pas qu'un site est publié.
 

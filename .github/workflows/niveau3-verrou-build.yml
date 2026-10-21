@@ -2,7 +2,9 @@ name: Niveau 3 — npm, builds et contrôles
 on:
   push:
     branches: [main]
-    paths: ['.github/workflows/niveau3-verrou-build.yml']
+    paths:
+      - '.github/workflows/niveau3-verrou-build.yml'
+      - 'projects/budget-tana/**'
   workflow_dispatch:
 permissions:
   contents: write

@@ -10,6 +10,17 @@ Ce site est une démonstration pédagogique **entièrement fictive** à Antanana
 - Un bouton efface uniquement les champs, un autre restaure les dix données fictives.
 - Aucun stockage local, requête réseau, backend ni transfert de données personnelles.
 
+## Installer Python 3 et ouvrir le site (guide débutant)
+
+1. Téléchargez Python 3 depuis **https://www.python.org/downloads/** sur un ordinateur Windows, macOS ou Linux. L'installation demande une connexion une seule fois ; Budget Tana peut ensuite fonctionner hors ligne.
+2. Installez Python suivant les indications de votre système. Sous Windows, autorisez son ajout au PATH si cette option est proposée. **Fermez puis rouvrez le terminal** après l'installation.
+3. Vérifiez Python : Windows `py --version` ou `python --version` ; macOS/Linux `python3 --version`. Le terminal doit afficher une version **Python 3.x**.
+4. **Extrayez tout le ZIP**, ouvrez le dossier qui contient exactement `index.html`, `src/` et `data/`. Ouvrez un terminal dans ce dossier (VS Code : Terminal → Nouveau terminal). Vérifiez avec `dir index.html` sous Windows ou `ls index.html` sous macOS/Linux.
+5. Démarrez le serveur **sur votre ordinateur uniquement** : Windows `py -m http.server 8000 --bind 127.0.0.1` (ou `python -m ...`) ; macOS/Linux `python3 -m http.server 8000 --bind 127.0.0.1`.
+6. Ouvrez **http://127.0.0.1:8000/** dans Chrome, Edge ou Firefox. Ouvrez F12 → Console si nécessaire. Gardez le terminal ouvert et arrêtez le serveur avec **Ctrl+C**.
+
+**Dépannage :** commande Python inconnue → vérifier l'installation et rouvrir le terminal ; erreur 404 → revenir au dossier contenant `index.html` et relancer le serveur ; « adresse déjà utilisée » → utiliser le port `8001` dans la commande **et** l'adresse ; scripts bloqués avec `file://` → utiliser l'adresse HTTP ; écran sans résultats → consulter F12 → Console et Réseau. Aucun `npm install`, compte, service payant ou donnée bancaire n'est nécessaire.
+
 ## Démarrer (serveur local)
 
 Depuis ce dossier, dans un terminal :

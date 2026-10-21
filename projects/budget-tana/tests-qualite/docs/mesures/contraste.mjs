@@ -9,6 +9,8 @@ export function contraste(texte, fond) {
   return (a + 0.05) / (b + 0.05);
 }
 if (process.argv[1]?.endsWith('contraste.mjs')) {
-  console.log('Exemple gris trop clair : ' + contraste('#9fa8b1','#ffffff').toFixed(2) + ':1');
-  console.log('Couleur du projet : ' + contraste('#50677a','#ffffff').toFixed(2) + ':1');
+  const insuffisant = contraste('#9fa8b1', '#ffffff').toFixed(2);
+  console.log('Exemple gris trop clair : ' + insuffisant + ':1');
+  const correct = contraste('#50677a', '#ffffff').toFixed(2);
+  console.log('Couleur du projet : ' + correct + ':1');
 }

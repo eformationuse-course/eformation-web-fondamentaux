@@ -49,6 +49,28 @@ jobs:
             (cd "$chemin" && npm ci --no-audit --no-fund && npm test && npm run build)
             echo "::endgroup::"
           done
+      - name: Préparer les trois ZIP complets sans les modules installés
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist-sources-n3
+          for entry in             'outillage-vite-git:budget-tana-vite'             'typescript-typages:budget-tana-typescript'             'typescript-architecture:Budget_Tana_TypeScript_architecture'; do
+            dossier="${entry%%:*}"
+            nom="${entry#*:}"
+            source="projects/budget-tana/$dossier"
+            cible="$RUNNER_TEMP/bundles/$nom"
+            mkdir -p "$cible"
+            cp -a "$source/." "$cible/"
+            rm -rf "$cible/node_modules" "$cible/dist"
+            rm -f "$cible/Budget_Tana_TypeScript_sources.zip"
+            (cd "$RUNNER_TEMP/bundles" && zip -q -r "$GITHUB_WORKSPACE/dist-sources-n3/$nom.zip" "$nom")
+            test -s "dist-sources-n3/$nom.zip"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: niveau-3-sources-avec-verrous
+          path: dist-sources-n3/*.zip
+          retention-days: 7
       - name: Vérifier ESLint et Prettier du projet outillage
         shell: bash
         run: |

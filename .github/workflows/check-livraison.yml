@@ -1,0 +1,45 @@
+name: Controle des trois sites avant publication
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'projects/portfolio/**'
+      - 'projects/budget-tana/livraison/**'
+      - '.github/workflows/check-livraison.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: projects/budget-tana/livraison/package-lock.json
+      - name: Tester portfolio
+        run: node --test projects/portfolio/tests/structure.test.mjs
+      - name: Installer, typer, tester et construire Budget Tana
+        working-directory: projects/budget-tana/livraison
+        run: |
+          npm ci
+          npm run typecheck
+          npm test
+          npm run build
+      - name: Assembler les sites en sous-dossiers
+        run: |
+          mkdir -p publication/kanto-services publication/budget-tana
+          cp projects/portfolio/index.html publication/index.html
+          cp projects/portfolio/styles.css publication/styles.css
+          cp -r projects/kanto-services/. publication/kanto-services/
+          cp -r projects/budget-tana/livraison/dist/. publication/budget-tana/
+          test -f publication/index.html
+          test -f publication/kanto-services/index.html
+          test -f publication/budget-tana/index.html
+          test -f publication/budget-tana/data/depenses-demo.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site-statique-verifie
+          path: publication

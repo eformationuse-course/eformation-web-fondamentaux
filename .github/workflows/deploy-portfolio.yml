@@ -1,0 +1,44 @@
+name: Publier portfolio, Kanto et Budget Tana (manuel)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: projects/budget-tana/livraison/package-lock.json
+      - name: Construire le site Budget Tana
+        working-directory: projects/budget-tana/livraison
+        run: |
+          npm ci
+          npm run typecheck
+          npm test
+          npm run build
+      - name: Assembler le portfolio et les sites
+        run: |
+          mkdir -p publication/kanto-services publication/budget-tana
+          cp projects/portfolio/index.html publication/index.html
+          cp projects/portfolio/styles.css publication/styles.css
+          cp -r projects/kanto-services/. publication/kanto-services/
+          cp -r projects/budget-tana/livraison/dist/. publication/budget-tana/
+          test -f publication/budget-tana/data/depenses-demo.json
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./publication
+      - uses: actions/deploy-pages@v4
+        id: deploy

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "origine": "Démonstration fictive à Antananarivo, sans données privées",
+  "depenses": [
+    { "id": "nov-repas", "date": "2026-11-03", "categorie": "Repas", "libelle": "Repas novembre fictifs", "montant": 54000 },
+    { "id": "nov-transport", "date": "2026-11-07", "categorie": "Transport", "libelle": "Transport novembre fictif", "montant": 18000 },
+    { "id": "nov-fournitures", "date": "2026-11-09", "categorie": "Fournitures", "libelle": "Cahiers novembre fictifs", "montant": 12000 }
+  ]
+}

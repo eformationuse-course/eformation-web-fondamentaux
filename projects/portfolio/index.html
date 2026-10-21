@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio pédagogique fictif : site vitrine HTML/CSS et application TypeScript réalisés à Antananarivo.">
+  <title>Portfolio pédagogique | Développement web</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller aux réalisations</a>
+  <header class="en-tete">
+    <div class="conteneur">
+      <p class="surtitre">Portfolio pédagogique · Madagascar</p>
+      <h1>Des projets web expliqués, pas des promesses</h1>
+      <p class="introduction">Deux réalisations fictives pour illustrer une progression de HTML/CSS vers TypeScript, les tests et la maintenance.</p>
+      <nav aria-label="Navigation du portfolio"><a href="#realisations">Projets</a><a href="#methode">Méthode</a><a href="#contact">À propos</a></nav>
+    </div>
+  </header>
+  <main id="contenu" class="conteneur" tabindex="-1">
+    <section id="realisations" aria-labelledby="titre-realisations">
+      <h2 id="titre-realisations">Réalisations vérifiables</h2>
+      <div class="cartes">
+        <article class="carte">
+          <p class="etiquette">HTML · CSS · responsive</p>
+          <h3>Kanto Services</h3>
+          <p>Site vitrine d'une activité imaginaire à Antananarivo : navigation clavier, services, tableau et formulaire sans envoi.</p>
+          <p><a href="./kanto-services/">Ouvrir la démonstration statique</a></p>
+          <p><a href="https://github.com/eformationuse-course/eformation-web-fondamentaux/tree/main/projects/kanto-services">Consulter les fichiers source sur GitHub (branche évolutive)</a></p>
+        </article>
+        <article class="carte">
+          <p class="etiquette">TypeScript · Vite · tests</p>
+          <h3>Budget Tana</h3>
+          <p>Gestion locale de dépenses fictives en MGA. Dix dépenses initiales : 780 000 MGA ; import JSON, filtres et restauration.</p>
+          <p><a href="./budget-tana/">Ouvrir l'application statique</a></p>
+          <p><a href="https://github.com/eformationuse-course/eformation-web-fondamentaux/tree/main/projects/budget-tana/livraison">Consulter les fichiers source sur GitHub (branche évolutive)</a></p>
+        </article>
+      </div>
+    </section>
+    <section id="methode" class="section" aria-labelledby="titre-methode">
+      <h2 id="titre-methode">Méthode de réalisation</h2>
+      <ol>
+        <li>Définir les données fictives et les objectifs du site.</li>
+        <li>Construire les interfaces sémantiques et adaptées au mobile.</li>
+        <li>Contrôler les comportements, les erreurs, le clavier et les chemins.</li>
+        <li>Conserver le code, les tests et la documentation dans Git.</li>
+      </ol>
+      <p>Les démonstrations sont des supports pédagogiques ; elles n'impliquent ni clientèle réelle, ni API bancaire, ni certification de sécurité.</p>
+    </section>
+    <section id="contact" class="section" aria-labelledby="titre-contact">
+      <h2 id="titre-contact">À propos</h2>
+      <p>Portfolio modèle. Avant toute utilisation professionnelle, remplacer ce texte par une identité autorisée et des faits vérifiés. Aucun formulaire, téléphone ou e-mail réel n'est publié.</p>
+    </section>
+  </main>
+  <footer class="pied"><div class="conteneur"><p>Exemples fictifs · Antananarivo · Aucun service commercial réel</p></div></footer>
+</body>
+</html>

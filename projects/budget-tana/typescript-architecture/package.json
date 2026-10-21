@@ -1,0 +1,23 @@
+{
+  "name": "budget-tana-typescript-architecture",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Architecture TypeScript modulaire - Budget Tana fictif",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "npm run typecheck && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "compile:tests": "tsc -p tsconfig.node.json",
+    "test": "npm run compile:tests && node --test tests/*.test.mjs",
+    "build:typescript": "tsc -p tsconfig.browser.json"
+  },
+  "devDependencies": {
+    "typescript": "5.8.3",
+    "vite": "8.3.4"
+  }
+}

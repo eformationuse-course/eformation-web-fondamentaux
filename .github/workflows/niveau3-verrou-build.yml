@@ -1,0 +1,56 @@
+name: Niveau 3 — npm, builds et contrôles
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/niveau3-verrou-build.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verrouiller-et-verifier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Résoudre et verrouiller les dépendances exactes
+        shell: bash
+        run: |
+          set -euo pipefail
+          for chemin in             projects/budget-tana/outillage-vite-git             projects/budget-tana/typescript-typages             projects/budget-tana/typescript-architecture; do
+            echo "::group::$chemin"
+            (cd "$chemin" && npm install --package-lock-only --ignore-scripts --no-audit --no-fund)
+            test -s "$chemin/package-lock.json"
+            echo "::endgroup::"
+          done
+      - name: Conserver les fichiers de verrou dans Git
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add projects/budget-tana/outillage-vite-git/package-lock.json             projects/budget-tana/typescript-typages/package-lock.json             projects/budget-tana/typescript-architecture/package-lock.json
+          if ! git diff --staged --quiet; then
+            git commit -m 'chore(budget-tana): verrouiller les dependances npm du niveau 3'
+            git push origin HEAD:main
+          fi
+      - name: Installer, tester et construire les trois jalons
+        shell: bash
+        run: |
+          set -euo pipefail
+          for chemin in             projects/budget-tana/outillage-vite-git             projects/budget-tana/typescript-typages             projects/budget-tana/typescript-architecture; do
+            echo "::group::$chemin"
+            (cd "$chemin" && npm ci --no-audit --no-fund && npm test && npm run build)
+            echo "::endgroup::"
+          done
+      - name: Vérifier ESLint et Prettier du projet outillage
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd projects/budget-tana/outillage-vite-git
+          npm run lint
+          npm run format:check

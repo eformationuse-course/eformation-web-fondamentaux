@@ -40,6 +40,19 @@ jobs:
             git commit -m 'chore(budget-tana): verrouiller les dependances npm du niveau 3'
             git push origin HEAD:main
           fi
+      - name: Appliquer Prettier au projet outillage et conserver le résultat
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd projects/budget-tana/outillage-vite-git
+          npm ci --no-audit --no-fund
+          npm run format
+          cd "$GITHUB_WORKSPACE"
+          git add projects/budget-tana/outillage-vite-git
+          if ! git diff --staged --quiet; then
+            git commit -m 'style(budget-tana): harmoniser le formatage Prettier'
+            git push origin HEAD:main
+          fi
       - name: Installer, tester et construire les trois jalons
         shell: bash
         run: |

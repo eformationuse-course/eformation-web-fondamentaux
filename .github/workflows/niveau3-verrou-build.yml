@@ -62,6 +62,44 @@ jobs:
             (cd "$chemin" && npm ci --no-audit --no-fund && npm test && npm run build)
             echo "::endgroup::"
           done
+      - name: Confirmer les réponses HTTP réelles de Vite dev et preview
+        shell: bash
+        run: |
+          set -euo pipefail
+          i=0
+          for chemin in             projects/budget-tana/outillage-vite-git             projects/budget-tana/typescript-typages             projects/budget-tana/typescript-architecture; do
+            i=$((i+1))
+            devport=$((5200+i))
+            previewport=$((4200+i))
+            echo "::group::$chemin"
+            cd "$GITHUB_WORKSPACE/$chemin"
+            for mode in dev preview; do
+              if [ "$mode" = dev ]; then port="$devport"; else port="$previewport"; fi
+              npm run "$mode" -- --port "$port" --strictPort > "$RUNNER_TEMP/vite-$i-$mode.log" 2>&1 &
+              pid=$!
+              ok=0
+              for tentative in $(seq 1 25); do
+                if curl --silent --fail "http://127.0.0.1:$port/" > "$RUNNER_TEMP/index-$i-$mode.html"; then
+                  ok=1
+                  break
+                fi
+                sleep 1
+              done
+              if [ "$ok" != 1 ]; then
+                cat "$RUNNER_TEMP/vite-$i-$mode.log"
+                exit 1
+              fi
+              grep -qi '<html' "$RUNNER_TEMP/index-$i-$mode.html"
+              curl --silent --show-error --fail "http://127.0.0.1:$port/data/depenses-demo.json" > "$RUNNER_TEMP/data-$i-$mode.json"
+              node -e "const fs=require('fs');const j=JSON.parse(fs.readFileSync(process.argv[1],'utf8'));const arr=j.depenses;if(!Array.isArray(arr)||arr.length!==3||arr.reduce((s,x)=>s+x.montant,0)!==84000)process.exit(2)" "$RUNNER_TEMP/data-$i-$mode.json"
+              code=$(curl -s -o /dev/null -w '%{http_code}' "http://127.0.0.1:$port/data/fichier-absent.json")
+              test "$code" = 404
+              echo "$chemin/$mode : page HTTP 200, JSON 3 lignes / 84000 MGA, absence HTTP 404"
+              kill "$pid" || true
+              cd "$GITHUB_WORKSPACE/$chemin"
+            done
+            echo "::endgroup::"
+          done
       - name: Préparer les trois ZIP complets sans les modules installés
         shell: bash
         run: |

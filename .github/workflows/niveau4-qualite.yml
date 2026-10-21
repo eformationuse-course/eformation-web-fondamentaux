@@ -35,3 +35,4 @@ jobs:
         run: |
           node docs/mesures/contraste.mjs
           node docs/mesures/poids.mjs
+          node docs/mesures/comparer-css.mjs

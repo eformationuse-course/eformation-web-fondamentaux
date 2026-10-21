@@ -53,3 +53,18 @@ Les tailles brutes / gzip sont des tailles sur disque et une *simulation gzip lo
 - MDN textContent : https://developer.mozilla.org/fr/docs/Web/API/Node/textContent
 - Web Vitals : https://web.dev/articles/vitals
 - OWASP XSS prevention : https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
+
+## Mesurer une optimisation réellement appliquée lors du build
+
+Depuis la racine du projet, exécuter :
+
+```sh
+npm run build
+node docs/mesures/comparer-css.mjs
+```
+
+Le script compare les mêmes styles CSS avant et après minification Vite.
+Sur l'artefact de production correspondant à cette feuille de style, relevé :
+3 583 octets bruts / 1 310 gzip local (source) et
+3 020 octets bruts / 1 212 gzip local (CSS de build).
+La variation porte sur les octets des fichiers, pas sur un LCP ni sur le temps réseau.

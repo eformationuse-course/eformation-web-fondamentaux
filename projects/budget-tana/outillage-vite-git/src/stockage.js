@@ -20,7 +20,7 @@ export function chargerStockage(storage, cle = CLE_STOCKAGE) {
       statut: 'ok',
       liste: enveloppe.depenses.map(item => ({ ...item }))
     };
-  } catch (erreur) {
+  } catch {
     // Syntaxe JSON cassée, données malformées, accès bloqué, etc.
     return { statut: 'invalide', liste: null };
   }
@@ -33,7 +33,7 @@ export function sauverStockage(storage, liste, cle = CLE_STOCKAGE) {
     calculerTotal(liste);
     storage.setItem(cle, JSON.stringify({ version: 1, depenses: liste }));
     return true;
-  } catch (erreur) {
+  } catch {
     // Par exemple SecurityError ou QuotaExceededError.
     return false;
   }
@@ -44,7 +44,7 @@ export function effacerStockage(storage, cle = CLE_STOCKAGE) {
   try {
     storage.removeItem(cle);
     return true;
-  } catch (erreur) {
+  } catch {
     return false;
   }
 }

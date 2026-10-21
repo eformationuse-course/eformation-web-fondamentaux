@@ -1,0 +1,37 @@
+name: Niveau 4 - qualité Budget Tana
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'projects/budget-tana/tests-qualite/**'
+      - '.github/workflows/niveau4-qualite.yml'
+  workflow_dispatch:
+
+jobs:
+  controle:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: projects/budget-tana/tests-qualite
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: projects/budget-tana/tests-qualite/package-lock.json
+      - name: Installer les versions verrouillées
+        run: npm ci
+      - name: Vérifier TypeScript
+        run: npm run typecheck
+      - name: Exécuter les tests métier et qualité
+        run: npm test
+      - name: Construire avec Vite
+        run: npm run build
+      - name: Comparer contrastes et poids
+        run: |
+          node docs/mesures/contraste.mjs
+          node docs/mesures/poids.mjs

@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "rootDir": "src",
+    "outDir": "dist",
+    "strict": true,
+    "skipLibCheck": true,
+    "rewriteRelativeImportExtensions": true,
+    "noUncheckedIndexedAccess": true,
+    "useUnknownInCatchVariables": true
+  },
+  "include": [
+    "src/domain/**/*.ts",
+    "src/services/**/*.ts",
+    "src/storage/**/*.ts",
+    "src/utils/**/*.ts",
+    "src/data/**/*.ts",
+    "src/ui/vue.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

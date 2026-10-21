@@ -1,0 +1,26 @@
+{
+  "name": "budget-tana-vite-outillage",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Budget Tana - migration pedagogique vers Vite sans framework",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test tests/*.test.mjs",
+    "lint": "eslint src tests vite.config.js eslint.config.js",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "vite": "8.3.4",
+    "eslint": "9.39.2",
+    "@eslint/js": "9.39.2",
+    "globals": "16.5.0",
+    "prettier": "3.6.2"
+  }
+}

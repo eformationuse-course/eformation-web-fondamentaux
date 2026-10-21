@@ -10,15 +10,14 @@ export function chargerStockage(storage, cle = CLE_STOCKAGE) {
     const texte = storage.getItem(cle);
     if (texte === null) return { statut: 'absent', liste: null };
     const enveloppe = JSON.parse(texte);
-    if (!enveloppe || enveloppe.version !== 1 ||
-        !Array.isArray(enveloppe.depenses)) {
+    if (!enveloppe || enveloppe.version !== 1 || !Array.isArray(enveloppe.depenses)) {
       return { statut: 'invalide', liste: null };
     }
     verifierCollection(enveloppe.depenses);
     calculerTotal(enveloppe.depenses);
     return {
       statut: 'ok',
-      liste: enveloppe.depenses.map(item => ({ ...item }))
+      liste: enveloppe.depenses.map((item) => ({ ...item })),
     };
   } catch {
     // Syntaxe JSON cassée, données malformées, accès bloqué, etc.

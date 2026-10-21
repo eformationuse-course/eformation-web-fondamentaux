@@ -1,7 +1,7 @@
 import { verifierRevenu } from './validation.js';
 
 const formatFrancais = new Intl.NumberFormat('fr-FR', {
-  maximumFractionDigits: 0
+  maximumFractionDigits: 0,
 });
 
 export function formatMGA(montant) {

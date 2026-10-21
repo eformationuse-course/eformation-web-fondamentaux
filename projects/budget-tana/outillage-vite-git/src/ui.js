@@ -23,19 +23,23 @@ export function initialiserInterface(document, fenetre = window) {
     compteur: document.querySelector('#nombre-depenses'),
     restaurer: document.querySelector('#restaurer'),
     charger: document.querySelector('#charger-json'),
-    erreurHTTP: document.querySelector('#tester-erreur-http')
+    erreurHTTP: document.querySelector('#tester-erreur-http'),
   };
   const champs = {
     libelle: document.querySelector('#libelle'),
     montant: document.querySelector('#montant'),
     categorie: document.querySelector('#categorie'),
-    date: document.querySelector('#date')
+    date: document.querySelector('#date'),
   };
 
   // Dans certains contextes (mode privé, restrictions), même la lecture
   // de la propriété localStorage peut lancer SecurityError.
   let storage;
-  try { storage = fenetre.localStorage; } catch { storage = null; }
+  try {
+    storage = fenetre.localStorage;
+  } catch {
+    storage = null;
+  }
   const charge = chargerStockage(storage);
   let autoriserSauvegarde = charge.statut !== 'invalide';
   if (charge.statut === 'ok') {
@@ -78,30 +82,41 @@ export function initialiserInterface(document, fenetre = window) {
     const categorie = champs.categorie.value;
     const date = champs.date.value;
     const erreurs = {
-      libelle: !libelle ? 'Saisissez une description.' :
-        libelle.length > 80 ? '80 caractères maximum.' : '',
-      montant: !texte ? 'Saisissez un montant.' :
-        !Number.isSafeInteger(montant) || montant <= 0 ?
-          'Saisissez un entier positif en MGA.' : '',
-      categorie: !categories.includes(categorie) ?
-        'Choisissez une catégorie.' : '',
-      date: !dateEstValide(date) ? 'Choisissez une date valide.' : ''
+      libelle: !libelle
+        ? 'Saisissez une description.'
+        : libelle.length > 80
+          ? '80 caractères maximum.'
+          : '',
+      montant: !texte
+        ? 'Saisissez un montant.'
+        : !Number.isSafeInteger(montant) || montant <= 0
+          ? 'Saisissez un entier positif en MGA.'
+          : '',
+      categorie: !categories.includes(categorie) ? 'Choisissez une catégorie.' : '',
+      date: !dateEstValide(date) ? 'Choisissez une date valide.' : '',
     };
     let premier = null;
     for (const nom of Object.keys(champs)) {
       erreurChamp(nom, erreurs[nom]);
       if (erreurs[nom] && premier === null) premier = champs[nom];
     }
-    if (premier) { premier.focus(); return null; }
+    if (premier) {
+      premier.focus();
+      return null;
+    }
     return { libelle, montant, categorie, date };
   }
 
   function listeVisible() {
     const categorie = elements.filtre.value;
     const terme = elements.recherche.value.trim().toLocaleLowerCase('fr');
-    const choix = etat.toutes().filter(item =>
-      (categorie === 'toutes' || item.categorie === categorie) &&
-      item.libelle.toLocaleLowerCase('fr').includes(terme));
+    const choix = etat
+      .toutes()
+      .filter(
+        (item) =>
+          (categorie === 'toutes' || item.categorie === categorie) &&
+          item.libelle.toLocaleLowerCase('fr').includes(terme),
+      );
     const ordre = elements.tri.value;
     if (ordre === 'montant-desc') {
       choix.sort((a, b) => b.montant - a.montant || a.id.localeCompare(b.id));
@@ -125,8 +140,8 @@ export function initialiserInterface(document, fenetre = window) {
       const titre = document.createElement('strong');
       titre.textContent = depense.libelle; // jamais innerHTML
       const detail = document.createElement('span');
-      detail.textContent = depense.date + ' · ' + depense.categorie +
-        ' · ' + formatMGA(depense.montant);
+      detail.textContent =
+        depense.date + ' · ' + depense.categorie + ' · ' + formatMGA(depense.montant);
       description.append(titre, detail);
       const bouton = document.createElement('button');
       bouton.type = 'button';
@@ -138,12 +153,13 @@ export function initialiserInterface(document, fenetre = window) {
     }
     elements.compteur.textContent = String(visibles.length);
     elements.total.textContent = formatMGA(calculerTotal(visibles));
-    elements.etatListe.textContent = visibles.length === 0 ?
-      'Aucune dépense ne correspond à ces filtres.' :
-      visibles.length + ' dépense(s) affichée(s).';
+    elements.etatListe.textContent =
+      visibles.length === 0
+        ? 'Aucune dépense ne correspond à ces filtres.'
+        : visibles.length + ' dépense(s) affichée(s).';
   }
 
-  elements.formulaire.addEventListener('submit', event => {
+  elements.formulaire.addEventListener('submit', (event) => {
     event.preventDefault();
     const valeurs = lireFormulaire();
     if (!valeurs) {
@@ -171,7 +187,7 @@ export function initialiserInterface(document, fenetre = window) {
   }
   elements.recherche.addEventListener('input', rendreListe);
 
-  elements.liste.addEventListener('click', event => {
+  elements.liste.addEventListener('click', (event) => {
     if (!(event.target instanceof fenetre.Element)) return;
     const bouton = event.target.closest('button[data-delete-id]');
     if (!bouton || !elements.liste.contains(bouton)) return;
@@ -193,9 +209,9 @@ export function initialiserInterface(document, fenetre = window) {
     elements.formulaire.reset();
     rendreListe();
     elements.retour.textContent = 'Dix dépenses fictives restaurées.';
-    elements.stockage.textContent = efface ?
-      'Sauvegarde locale effacée ; dix exemples restaurés.' :
-      'Exemples restaurés en mémoire ; stockage indisponible.';
+    elements.stockage.textContent = efface
+      ? 'Sauvegarde locale effacée ; dix exemples restaurés.'
+      : 'Exemples restaurés en mémoire ; stockage indisponible.';
   });
 
   async function importer(url) {
@@ -207,8 +223,8 @@ export function initialiserInterface(document, fenetre = window) {
       const nombre = etat.fusionner(data);
       sauvegarder();
       rendreListe();
-      elements.reseau.textContent = nombre +
-        ' nouvelle(s) dépense(s) chargée(s) depuis le JSON local.';
+      elements.reseau.textContent =
+        nombre + ' nouvelle(s) dépense(s) chargée(s) depuis le JSON local.';
     } catch (erreur) {
       // Aucune modification de liste si fetch, HTTP, JSON ou validation échoue.
       elements.reseau.textContent = 'Chargement échoué : ' + erreur.message;
@@ -218,9 +234,11 @@ export function initialiserInterface(document, fenetre = window) {
     }
   }
   elements.charger.addEventListener('click', () =>
-    importer('data/depenses-demo.json'));
+    importer('data/depenses-demo.json'),
+  );
   elements.erreurHTTP.addEventListener('click', () =>
-    importer('data/fichier-absent.json'));
+    importer('data/fichier-absent.json'),
+  );
 
   rendreListe();
   return { etat, rendreListe };

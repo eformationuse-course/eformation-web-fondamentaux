@@ -1,17 +1,20 @@
-import { categories, verifierCollection, verifierMois,
-  verifierRevenu } from './validation.js';
+import {
+  categories,
+  verifierCollection,
+  verifierMois,
+  verifierRevenu,
+} from './validation.js';
 
 // Une nouvelle liste est produite ; l'originale est préservée.
 export function depensesDuMois(liste, mois) {
   verifierCollection(liste);
   verifierMois(mois);
-  return liste.filter(depense => depense.date.startsWith(mois + '-'));
+  return liste.filter((depense) => depense.date.startsWith(mois + '-'));
 }
 
 export function calculerTotal(liste) {
   verifierCollection(liste);
-  const total = liste.reduce((somme, depense) =>
-    somme + depense.montant, 0);
+  const total = liste.reduce((somme, depense) => somme + depense.montant, 0);
   if (!Number.isSafeInteger(total)) {
     throw new RangeError('Total trop grand pour un entier sûr.');
   }
@@ -20,7 +23,7 @@ export function calculerTotal(liste) {
 
 export function trouverDepense(liste, id) {
   verifierCollection(liste);
-  return liste.find(depense => depense.id === id);
+  return liste.find((depense) => depense.id === id);
 }
 
 export function depensesParCategorie(liste, categorie) {
@@ -28,13 +31,17 @@ export function depensesParCategorie(liste, categorie) {
   if (!categories.includes(categorie)) {
     throw new RangeError('Catégorie inconnue.');
   }
-  return liste.filter(depense => depense.categorie === categorie);
+  return liste.filter((depense) => depense.categorie === categorie);
 }
 
 export function totauxParCategorie(liste) {
   verifierCollection(liste);
   const resultat = {
-    Logement: 0, Repas: 0, Transport: 0, Internet: 0, Fournitures: 0
+    Logement: 0,
+    Repas: 0,
+    Transport: 0,
+    Internet: 0,
+    Fournitures: 0,
   };
   for (const depense of liste) {
     const nouveau = resultat[depense.categorie] + depense.montant;
@@ -48,8 +55,7 @@ export function totauxParCategorie(liste) {
 
 export function trierParMontantDecroissant(liste) {
   verifierCollection(liste);
-  return [...liste].sort((a, b) =>
-    b.montant - a.montant || a.id.localeCompare(b.id));
+  return [...liste].sort((a, b) => b.montant - a.montant || a.id.localeCompare(b.id));
 }
 
 export function trierParDate(liste) {

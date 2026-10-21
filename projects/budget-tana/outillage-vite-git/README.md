@@ -4,13 +4,13 @@ Projet pédagogique fictif à Antananarivo (Madagascar). Ce jalon reprend les fo
 
 ## Résultats de référence
 
-| Étape | Dépenses | Montant affiché (MGA) |
-|---|---:|---:|
-| Avant import JSON, toutes catégories | 10 | 780 000 |
-| Après import des 3 entrées fictives | 13 | 864 000 |
-| Deuxième import du même JSON | 13 | 864 000 |
-| Filtre Repas après import | 3 | 309 000 |
-| Bouton erreur 404 | 13 | 864 000 |
+| Étape                                | Dépenses | Montant affiché (MGA) |
+| ------------------------------------ | -------: | --------------------: |
+| Avant import JSON, toutes catégories |       10 |               780 000 |
+| Après import des 3 entrées fictives  |       13 |               864 000 |
+| Deuxième import du même JSON         |       13 |               864 000 |
+| Filtre Repas après import            |        3 |               309 000 |
+| Bouton erreur 404                    |       13 |               864 000 |
 
 Le filtrage est temporaire : le total affiché correspond aux seules lignes visibles. `localStorage` est propre à l'origine du site, non chiffré et réservé aux données fictives. Recharger le navigateur sous **la même origine** conserve les lignes si le stockage est autorisé.
 
@@ -52,15 +52,15 @@ budget-tana-vite/
 
 ## Scripts npm et rôle
 
-| Commande | Effet observé ou attendu |
-|---|---|
-| `npm run dev` | Lance le serveur de développement Vite (à exécuter après installation). |
-| `npm run build` | Assemble l'application dans `dist/` (non exécuté dans l'environnement de création). |
-| `npm run preview` | Sert un aperçu local du build déjà créé. |
-| `npm run test` | Exécute **16 tests** Node natifs ; **réussi localement**. |
-| `npm run lint` | Lance ESLint en configuration simple recommandée. |
-| `npm run format` | Applique Prettier ; modifie les fichiers suivis par Git. |
-| `npm run format:check` | Détecte les différences de présentation sans les corriger. |
+| Commande               | Effet observé ou attendu                                                            |
+| ---------------------- | ----------------------------------------------------------------------------------- |
+| `npm run dev`          | Lance le serveur de développement Vite (à exécuter après installation).             |
+| `npm run build`        | Assemble l'application dans `dist/` (non exécuté dans l'environnement de création). |
+| `npm run preview`      | Sert un aperçu local du build déjà créé.                                            |
+| `npm run test`         | Exécute **16 tests** Node natifs ; **réussi localement**.                           |
+| `npm run lint`         | Lance ESLint en configuration simple recommandée.                                   |
+| `npm run format`       | Applique Prettier ; modifie les fichiers suivis par Git.                            |
+| `npm run format:check` | Détecte les différences de présentation sans les corriger.                          |
 
 Les versions exactes des dépendances directes sont définies dans `package.json`. Les dépendances transitives ne peuvent être intégralement figées qu'après génération de `package-lock.json` par `npm install`. Conserver ce fichier et préférer `npm ci` dans un projet disposant déjà d'un verrou.
 

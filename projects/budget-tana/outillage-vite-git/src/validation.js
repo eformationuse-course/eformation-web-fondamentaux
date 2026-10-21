@@ -1,6 +1,10 @@
 // Contrôles utiles avant de faire des calculs sur une collection.
 export const categories = [
-  'Logement', 'Repas', 'Transport', 'Internet', 'Fournitures'
+  'Logement',
+  'Repas',
+  'Transport',
+  'Internet',
+  'Fournitures',
 ];
 
 export function dateEstValide(date) {
@@ -8,13 +12,13 @@ export function dateEstValide(date) {
     return false;
   }
   const valeur = new Date(date + 'T00:00:00Z');
-  return !Number.isNaN(valeur.getTime()) &&
-    valeur.toISOString().slice(0, 10) === date;
+  return (
+    !Number.isNaN(valeur.getTime()) && valeur.toISOString().slice(0, 10) === date
+  );
 }
 
 export function verifierDepense(depense) {
-  if (depense === null || typeof depense !== 'object' ||
-      Array.isArray(depense)) {
+  if (depense === null || typeof depense !== 'object' || Array.isArray(depense)) {
     throw new TypeError('Une dépense doit être un objet.');
   }
   if (typeof depense.id !== 'string' || depense.id.trim() === '') {
@@ -26,8 +30,7 @@ export function verifierDepense(depense) {
   if (!categories.includes(depense.categorie)) {
     throw new RangeError('Catégorie inconnue.');
   }
-  if (typeof depense.libelle !== 'string' ||
-      depense.libelle.trim() === '') {
+  if (typeof depense.libelle !== 'string' || depense.libelle.trim() === '') {
     throw new TypeError('Libellé manquant.');
   }
   if (!Number.isSafeInteger(depense.montant) || depense.montant <= 0) {
@@ -51,8 +54,7 @@ export function verifierCollection(liste) {
 }
 
 export function verifierMois(mois) {
-  if (typeof mois !== 'string' ||
-      !/^\d{4}-(0[1-9]|1[0-2])$/.test(mois)) {
+  if (typeof mois !== 'string' || !/^\d{4}-(0[1-9]|1[0-2])$/.test(mois)) {
     throw new RangeError('Mois invalide : utiliser AAAA-MM.');
   }
 }

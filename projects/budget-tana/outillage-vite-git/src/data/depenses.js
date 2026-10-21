@@ -6,42 +6,42 @@ export const depenses = [
     date: '2026-09-02',
     categorie: 'Logement',
     libelle: 'Loyer septembre',
-    montant: 180000
+    montant: 180000,
   },
   {
     id: 'sep-repas',
     date: '2026-09-06',
     categorie: 'Repas',
     libelle: 'Repas septembre',
-    montant: 120000
+    montant: 120000,
   },
   {
     id: 'sep-transport',
     date: '2026-09-08',
     categorie: 'Transport',
     libelle: 'Transport septembre',
-    montant: 40000
+    montant: 40000,
   },
   {
     id: 'sep-internet',
     date: '2026-09-12',
     categorie: 'Internet',
     libelle: 'Connexion septembre',
-    montant: 25000
+    montant: 25000,
   },
   {
     id: 'sep-fournitures',
     date: '2026-09-15',
     categorie: 'Fournitures',
     libelle: 'Cahiers septembre',
-    montant: 10000
+    montant: 10000,
   },
   {
     id: 'oct-logement',
     date: '2026-10-02',
     categorie: 'Logement',
     libelle: 'Loyer octobre',
-    montant: 180000
+    montant: 180000,
   },
   {
     id: 'oct-repas',
@@ -49,27 +49,27 @@ export const depenses = [
     categorie: 'Repas',
     libelle: 'Repas octobre',
     montant: 135000,
-    note: 'Dépense fictive'
+    note: 'Dépense fictive',
   },
   {
     id: 'oct-transport',
     date: '2026-10-08',
     categorie: 'Transport',
     libelle: 'Transport octobre',
-    montant: 45000
+    montant: 45000,
   },
   {
     id: 'oct-internet',
     date: '2026-10-12',
     categorie: 'Internet',
     libelle: 'Connexion octobre',
-    montant: 25000
+    montant: 25000,
   },
   {
     id: 'oct-fournitures',
     date: '2026-10-15',
     categorie: 'Fournitures',
     libelle: 'Cahiers octobre',
-    montant: 20000
+    montant: 20000,
   },
 ];

@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "rootDir": "src",
+    "outDir": "dist",
+    "strict": true,
+    "skipLibCheck": true,
+    "rewriteRelativeImportExtensions": true,
+    "noUncheckedIndexedAccess": true,
+    "useUnknownInCatchVariables": true
+  },
+  "include": [
+    "src/types.ts",
+    "src/data/depenses.ts",
+    "src/validation.ts",
+    "src/calculs.ts",
+    "src/etat.ts",
+    "src/api.ts",
+    "src/stockage.ts",
+    "src/formatage.ts",
+    "src/dom.ts"
+  ],
+  "exclude": ["dist", "node_modules"]
+}
